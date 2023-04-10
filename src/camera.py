@@ -1,5 +1,4 @@
 import os
-import sys
 import datetime
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
@@ -10,7 +9,6 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 import cv2
 from pypylon import pylon
-from PIL import Image
 
 
 # class camera_update(QObject):

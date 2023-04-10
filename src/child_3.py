@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QApplication, QMessageBox, QFileDialog, QDesktopWidget
 from PySide2.QtUiTools import QUiLoader
 import PySide2.QtGui as QtGui
-import screen
+# import screen
 import os
 import shutil
 from string import Template

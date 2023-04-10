@@ -10,7 +10,7 @@ from PIL import Image, ImageEnhance
 from pywt import dwt2, idwt2
 import os
 import sys
-import screen
+# import screen
 
 
 class ChildWindow:

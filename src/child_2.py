@@ -5,7 +5,7 @@ from PySide2.QtCore import QEventLoop, QTimer
 from PySide2.QtCore import Slot
 import sys
 import os
-import screen
+# import screen
 import signal
 import matplotlib.pyplot as plt
 
