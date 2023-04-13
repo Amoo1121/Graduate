@@ -170,6 +170,7 @@ class ChildWindow():
             self.ui.LAUNCH_CAMERA.setEnabled(True)
             self.ui.camera_img.setPixmap('')  # 还原label
             self.ui.camera_img.setScaledContents(True)
+            os.startfile(self.SaveFilePath)
         elif self.camera_num == 2:
             self.timer_shot.stop()
             self.timer_pc.stop()
@@ -182,6 +183,7 @@ class ChildWindow():
             self.ui.LAUNCH_CAMERA.setEnabled(True)
             self.ui.camera_img.setPixmap('')  # 还原label
             self.ui.camera_img.setScaledContents(True)
+            os.startfile(self.SaveFilePath)
 
     def basler_show(self):
         converter = pylon.ImageFormatConverter()

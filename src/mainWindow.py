@@ -2,8 +2,9 @@ from PySide2.QtWidgets import QApplication, QMessageBox, QDesktopWidget
 from PySide2.QtUiTools import QUiLoader
 from PySide2 import QtCore
 import sys
-# import qdarkstyle
-# import os
+import qdarkstyle
+from qdarkstyle.light.palette import LightPalette
+import os
 from qt_material import apply_stylesheet
 from src import child_1, child_2, child_3, camera, console
 
@@ -68,11 +69,14 @@ class experiment:
 
 
 app = QApplication(sys.argv)
-# # setup stylesheet
-# app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
-# # or in new API
-# app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
-apply_stylesheet(app, theme='dark_teal.xml')
+# setup stylesheet
+app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+# or in new API
+app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=LightPalette()))
+# apply_stylesheet(app, theme='light_amber.xml')  # 亮黄色
+# apply_stylesheet(app, theme='light_blue.xml')  # 蓝色
+# apply_stylesheet(app, theme='light_cyan.xml')  # 亮蓝色
+# apply_stylesheet(app, theme='light_pink.xml')  # 亮蓝色
 expe = experiment()
 expe.ui.show()  # 设置主题并运行
 app.exec_()
