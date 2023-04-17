@@ -17,11 +17,14 @@ class ChildWindow:
     def __init__(self):
         # 从文件中加载UI定义
         # 从 UI 定义中动态 创建一个相应的窗口对象
+        self.rimage = None
+        self.backup = None
         self.ui = QUiLoader().load('./Resources/UI/child_1.ui')
         # self.ui.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.center()
         self.ui.chooseFile.clicked.connect(self.openFileNameDialog)
         self.ui.save.clicked.connect(self.saveFile)
+        self.ui.backout.clicked.connect(self.backout)
         self.ui.resButton.clicked.connect(self.reset_app)
         self.ui.stopButton.clicked.connect(self.exit_app)
         self.ui.grey.clicked.connect(self.grey_trans)
@@ -48,15 +51,21 @@ class ChildWindow:
     def exit_app(self):
         self.ui.close()
 
-    def reset_app(self):
-        self.ui.oImage.setPixmap(image_file)  #重置图片
-        self.ui.oImage.setScaledContents(True) #使图片尺寸适应控件大小
-        self.ui.rImage.setPixmap(image_file)
+    def backout(self):
+        self.rimage = self.backup
+        img = QtGui.QImage(self.backup, self.backup.shape[1], self.backup.shape[0], QtGui.QImage.Format_BGR888)
+        img = QtGui.QPixmap(img)
+        self.ui.rImage.setPixmap(img)
         self.ui.rImage.setScaledContents(True)
-        self.ui.pImage.setPixmap(image_file)
+
+    def reset_app(self):
+        self.ui.oImage.setPixmap(self.image_file)  #重置图片
+        self.ui.oImage.setScaledContents(True) #使图片尺寸适应控件大小
+        self.ui.rImage.setPixmap(self.image_file)
+        self.ui.rImage.setScaledContents(True)
+        self.ui.pImage.setPixmap(self.image_file)
         self.ui.pImage.setScaledContents(True)
-        global rimage
-        rimage = cv2.imread(image_file)
+        self.rimage = cv2.imread(self.image_file)
 
     def openFileNameDialog(self):
         FileDialog = QFileDialog(self.ui.chooseFile)
@@ -64,35 +73,33 @@ class ChildWindow:
         FileDialog.setFileMode(QFileDialog.AnyFile)
         # 文件过滤
         Filter = "(*.jpg,*.png,*.jpeg,*.bmp,*.gif)|*.jgp;*.png;*.jpeg;*.bmp;*.gif|All files(*.*)|*.*"
-        global image_file
-        image_file, _ = FileDialog.getOpenFileName(self.ui.chooseFile, 'open file', './',
+        self.image_file, _ = FileDialog.getOpenFileName(self.ui.chooseFile, 'open file', './',
                                                    'Image files (*.jpg *.gif *.png *.jpeg)')  # 选择目录，返回选中的路径 'Image files (*.jpg *.gif *.png *.jpeg)'
         # 判断是否正确打开文件
-        if not image_file:
+        if not self.image_file:
             QMessageBox.warning(self.ui.chooseFile, "警告", "文件错误或打开文件失败！", QMessageBox.Yes)
             return
-        self.ui.oImage.setPixmap(image_file)
+        self.ui.oImage.setPixmap(self.image_file)
         self.ui.oImage.setScaledContents(True)
-        self.ui.rImage.setPixmap(image_file)
+        self.ui.rImage.setPixmap(self.image_file)
         self.ui.rImage.setScaledContents(True)
-        self.ui.pImage.setPixmap(image_file)
+        self.ui.pImage.setPixmap(self.image_file)
         self.ui.pImage.setScaledContents(True)
-        global rimage
-        rimage = cv2.imread(image_file)
+        self.rimage = cv2.imread(self.image_file)
 
     def saveFile(self):
         SaveFilePath = QFileDialog.getExistingDirectory(self.ui.save) #打开存储路径
-        cv2.imwrite(os.path.join(SaveFilePath, 'Processed image.png'), rimage) #保存图像
+        cv2.imwrite(os.path.join(SaveFilePath, 'Processed image.png'), self.rimage) #保存图像
         # cv2.imwrite(os.path.join(SaveFilePath, 'Pre-processed image.png'), pimage)
         # cv2.imwrite('预处理图像', pimage)
 
     def grey_trans(self):
-        global rimage
         # self.ui.pImage.setText("无")
-        img = rimage
+        img = self.rimage
         value_max = np.max(img)
         y = value_max - img
-        rimage = y
+        self.rimage = y
+        self.backup = y
         # 将图片转化成Qt可读格式
         grey_image = QtGui.QImage(y, y.shape[1], y.shape[0], QtGui.QImage.Format_BGR888)
         grey_image = QtGui.QPixmap(grey_image)
@@ -100,11 +107,10 @@ class ChildWindow:
         self.ui.rImage.setScaledContents(True)
 
     def Trans_radon(self):
-        global rimage
         # self.ui.pImage.setText("无")
         opt = self.ui.Trans_Opt.currentIndex()
         if opt == 0:
-            img = Image.fromarray(rimage)
+            img = Image.fromarray(self.rimage)
             img = ImageEnhance.Contrast(img).enhance(3)  # 对比度增强类,用于调整图像的对比度,3为增强3倍
             img = np.array(img)
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -124,7 +130,8 @@ class ChildWindow:
                 for x1, y1, x2, y2 in line:
                     cv2.line(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
                 pass
-            rimage = img
+            self.rimage = img
+            self.backup = img
             hough_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
             hough_image = QtGui.QPixmap(hough_image)
             self.ui.rImage.setPixmap(hough_image)
@@ -132,12 +139,13 @@ class ChildWindow:
             # print(type(rimage))
         elif opt == 1:
             # image = cv2.cvtColor(rimage, cv2.COLOR_RGB2GRAY)
-            image = Image.fromarray(rimage)
+            image = Image.fromarray(self.rimage)
             f = np.fft.fft2(image)
             fshift = np.fft.fftshift(f)
             magnitude_spectrum = 20 * np.log(np.abs(fshift))
             magnitude_spectrum = np.ascontiguousarray(magnitude_spectrum)
-            rimage = magnitude_spectrum
+            self.rimage = magnitude_spectrum
+            self.backup = magnitude_spectrum
             f_image = QtGui.QImage(magnitude_spectrum, magnitude_spectrum.shape[1], magnitude_spectrum.shape[0],
                                    QtGui.QImage.Format_BGR888)
             f_image = QtGui.QPixmap(f_image)
@@ -145,10 +153,9 @@ class ChildWindow:
             self.ui.rImage.setScaledContents(True)
 
     def G_Trans(self):
-        global rimage
         # 获取原始图像列数和行数
-        rows, cols, channel = rimage.shape
-        result = rimage
+        rows, cols, channel = self.rimage.shape
+        result = self.rimage
         delta_x = self.ui.delta_x.text()
         delta_y = self.ui.delta_y.text()
         delta_degree = int(self.ui.delta_degree.text())
@@ -165,19 +172,20 @@ class ChildWindow:
             M = np.float32([[1, 0, delta_x], [0, 1, delta_y]])
             # 图像平移
             result = cv2.warpAffine(result, M, (cols, rows))
-        rimage = result
+        self.rimage = result
+        self.backup = result
         GTrans_image = QtGui.QImage(result, result.shape[1], result.shape[0], QtGui.QImage.Format_BGR888)
         GTrans_image = QtGui.QPixmap(GTrans_image)
         self.ui.rImage.setPixmap(GTrans_image)
         self.ui.rImage.setScaledContents(True)
 
     def erode(self):
-        global rimage
         kernel_size = int(self.ui.ED_KERNEL_SIZE.text())
         # 设置腐蚀和膨胀核
         kernel = np.ones(shape=[kernel_size, kernel_size], dtype=np.uint8)  # 通过shape=[3,3]可以改变处理效果
-        OriginErodeImg = cv2.erode(rimage, kernel=kernel)
-        rimage = OriginErodeImg
+        OriginErodeImg = cv2.erode(self.rimage, kernel=kernel)
+        self.rimage = OriginErodeImg
+        self.backup = OriginErodeImg
         erode_image = QtGui.QImage(OriginErodeImg, OriginErodeImg.shape[1], OriginErodeImg.shape[0],
                                    QtGui.QImage.Format_BGR888)
         erode_image = QtGui.QPixmap(erode_image)
@@ -185,55 +193,55 @@ class ChildWindow:
         self.ui.rImage.setScaledContents(True)
 
     def dilate(self):
-        global rimage
         kernel_size = int(self.ui.ED_KERNEL_SIZE.text())
         # 设置腐蚀和膨胀核
         kernel = np.ones(shape=[kernel_size, kernel_size], dtype=np.uint8)  # 通过shape=[3,3]可以改变处理效果
-        img = cv2.dilate(rimage, kernel, iterations=1)
-        rimage = img
+        img = cv2.dilate(self.rimage, kernel, iterations=1)
+        self.rimage = img
+        self.backup = img
         dilate_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         dilate_image = QtGui.QPixmap(dilate_image)
         self.ui.rImage.setPixmap(dilate_image)
         self.ui.rImage.setScaledContents(True)
 
     def smooth(self):
-        global rimage
         KERNEL_SIZE = int(self.ui.FILTER_KERNEL_SIZE.text())
-        img = rimage
+        img = self.rimage
         img = cv2.blur(img, (KERNEL_SIZE, KERNEL_SIZE))
-        rimage = img
+        self.rimage = img
+        self.backup = img
         smooth_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         smooth_image = QtGui.QPixmap(smooth_image)
         self.ui.rImage.setPixmap(smooth_image)
         self.ui.rImage.setScaledContents(True)
 
     def filter(self):
-        global rimage
         KERNEL_SIZE = int(self.ui.FILTER_KERNEL_SIZE.text())
-        img = cv2.medianBlur(rimage, KERNEL_SIZE)
-        rimage = img
+        img = cv2.medianBlur(self.rimage, KERNEL_SIZE)
+        self.rimage = img
+        self.backup = img
         smooth_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         smooth_image = QtGui.QPixmap(smooth_image)
         self.ui.rImage.setPixmap(smooth_image)
         self.ui.rImage.setScaledContents(True)
 
     def sharpen(self):
-        global rimage
-        img = cv2.addWeighted(rimage, 2, cv2.GaussianBlur(rimage, (0, 0), 10), -1, 128)
-        rimage = img
+        img = cv2.addWeighted(self.rimage, 2, cv2.GaussianBlur(self.rimage, (0, 0), 10), -1, 128)
+        self.rimage = img
+        self.backup = img
         sharpen_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         sharpen_image = QtGui.QPixmap(sharpen_image)
         self.ui.rImage.setPixmap(sharpen_image)
         self.ui.rImage.setScaledContents(True)
 
     def FFT(self):
-        global rimage
-        image = Image.fromarray(rimage)
+        image = Image.fromarray(self.rimage)
         f = np.fft.fft2(image)
         fshift = np.fft.fftshift(f)
         magnitude_spectrum = 20 * np.log(np.abs(fshift))
         magnitude_spectrum = np.ascontiguousarray(magnitude_spectrum)
-        rimage = magnitude_spectrum
+        self.rimage = magnitude_spectrum
+        self.backup = magnitude_spectrum
         f_image = QtGui.QImage(magnitude_spectrum, magnitude_spectrum.shape[1], magnitude_spectrum.shape[0],
                                QtGui.QImage.Format_BGR888)
         f_image = QtGui.QPixmap(f_image)
@@ -241,8 +249,7 @@ class ChildWindow:
         self.ui.rImage.setScaledContents(True)
 
     def lowPassFiltering(self):
-        global rimage
-        img = cv2.cvtColor(rimage, cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(self.rimage, cv2.COLOR_BGR2GRAY)
         # 傅里叶变换
         dft = cv2.dft(np.float32(img), flags=cv2.DFT_COMPLEX_OUTPUT)
         fshift = np.fft.fftshift(dft)
@@ -271,8 +278,7 @@ class ChildWindow:
         self.ui.pImage.setScaledContents(True)
 
     def highPassFiltering(self):
-        global rimage
-        img = rimage
+        img = self.rimage
         # 傅里叶变换
         f = np.fft.fft2(img)
         fshift = np.fft.fftshift(f)
@@ -298,8 +304,7 @@ class ChildWindow:
         self.ui.pImage.setScaledContents(True)
 
     def DWT(self):
-        global rimage
-        img = cv2.cvtColor(rimage, cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(self.rimage, cv2.COLOR_BGR2GRAY)
         # 对img进行haar小波变换：
         cA, (cH, cV, cD) = dwt2(img, 'haar')
         # # 小波变换之后，低频分量对应的图像：
