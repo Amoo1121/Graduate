@@ -69,10 +69,11 @@ class experiment:
 
 
 app = QApplication(sys.argv)
-# setup stylesheet
-app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
-# or in new API
-app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=LightPalette()))
+# # setup stylesheet
+# app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+# # or in new API
+# app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=LightPalette()))
+
 # apply_stylesheet(app, theme='light_amber.xml')  # 亮黄色
 # apply_stylesheet(app, theme='light_blue.xml')  # 蓝色
 # apply_stylesheet(app, theme='light_cyan.xml')  # 亮蓝色

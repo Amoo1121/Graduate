@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1403</width>
+    <width>1651</width>
     <height>655</height>
    </rect>
   </property>
@@ -45,6 +45,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>线性或非线性变换</string>
              </property>
@@ -57,6 +63,12 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <item>
               <property name="text">
@@ -79,6 +91,12 @@
          </item>
          <item alignment="Qt::AlignLeft">
           <widget class="Line" name="line_2">
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -96,6 +114,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>输入通道数：</string>
                </property>
@@ -108,6 +132,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>0</string>
@@ -125,6 +155,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>输出通道数：</string>
                </property>
@@ -137,6 +173,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>0</string>
@@ -154,6 +196,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>卷积核大小：</string>
                </property>
@@ -166,6 +214,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>3</string>
@@ -187,6 +241,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>步长：</string>
                </property>
@@ -199,6 +259,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>1</string>
@@ -216,6 +282,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>填充层数：</string>
                </property>
@@ -228,6 +300,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>0</string>
@@ -249,6 +327,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -258,6 +342,12 @@
        </item>
        <item>
         <widget class="Line" name="line_3">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -275,6 +365,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>激活函数</string>
              </property>
@@ -287,6 +383,12 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <item>
               <property name="text">
@@ -320,6 +422,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -329,6 +437,12 @@
        </item>
        <item>
         <widget class="Line" name="line_4">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -346,6 +460,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>批标准化</string>
              </property>
@@ -358,6 +478,12 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <item>
               <property name="text">
@@ -375,6 +501,12 @@
          </item>
          <item>
           <widget class="QLabel" name="label_11">
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>输入通道数：</string>
            </property>
@@ -387,6 +519,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>0</string>
@@ -404,6 +542,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -413,6 +557,12 @@
        </item>
        <item>
         <widget class="Line" name="line_5">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -430,6 +580,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>池化方式</string>
              </property>
@@ -442,6 +598,12 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <item>
               <property name="text">
@@ -468,6 +630,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
               <widget class="QLabel" name="label_12">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>池化过滤器大小</string>
                </property>
@@ -475,6 +643,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_13">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>长：</string>
                </property>
@@ -488,6 +662,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>3</string>
                </property>
@@ -498,6 +678,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_14">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>宽：</string>
                </property>
@@ -510,6 +696,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>2</string>
@@ -525,6 +717,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
               <widget class="QLabel" name="label_15">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>步长</string>
                </property>
@@ -532,6 +730,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_16">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>长度方向：</string>
                </property>
@@ -545,6 +749,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>2</string>
                </property>
@@ -555,6 +765,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_17">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>宽度方向：</string>
                </property>
@@ -567,6 +783,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>1</string>
@@ -588,6 +810,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -597,6 +825,12 @@
        </item>
        <item>
         <widget class="Line" name="line_6">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -608,6 +842,12 @@
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item alignment="Qt::AlignLeft">
             <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Dropout2d</string>
              </property>
@@ -617,6 +857,12 @@
          </item>
          <item>
           <widget class="QLabel" name="label_18">
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>丢弃概率：</string>
            </property>
@@ -632,6 +878,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>0.5</string>
@@ -649,6 +901,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -660,6 +918,12 @@
      </item>
      <item>
       <widget class="Line" name="line_7">
+       <property name="font">
+        <font>
+         <family>宋体</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -669,6 +933,12 @@
       <layout class="QVBoxLayout" name="verticalLayout_8">
        <item>
         <widget class="QComboBox" name="comboBox_5">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <item>
           <property name="text">
            <string>MNIST</string>
@@ -696,6 +966,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>新建层</string>
            </property>
@@ -708,6 +984,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>删除本层</string>
@@ -726,6 +1008,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>完成并预览</string>
            </property>
@@ -738,6 +1026,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>生成</string>
@@ -752,6 +1046,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>清空</string>
            </property>
@@ -765,6 +1065,12 @@
    </item>
    <item>
     <widget class="Line" name="line">
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -772,6 +1078,12 @@
    </item>
    <item>
     <widget class="QTextEdit" name="show_code">
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>

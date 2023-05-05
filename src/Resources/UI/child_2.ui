@@ -31,6 +31,12 @@
    </property>
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -51,6 +57,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>选择存放路径</string>
              </property>
@@ -64,6 +76,12 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>打开视频文件</string>
              </property>
@@ -73,6 +91,12 @@
          </item>
          <item>
           <widget class="Line" name="line_5">
+           <property name="font">
+            <font>
+             <family>宋体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -84,6 +108,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item alignment="Qt::AlignHCenter">
               <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>视频总帧数：</string>
                </property>
@@ -100,6 +130,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>0</string>
                </property>
@@ -113,6 +149,12 @@
              </item>
              <item alignment="Qt::AlignHCenter">
               <widget class="QLabel" name="label_11">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>固定帧率：</string>
                </property>
@@ -125,6 +167,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>1</string>
@@ -145,6 +193,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>开始转换</string>
@@ -455,8 +509,24 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="AE_CHOOSE">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>选择测试图像</string>
+           </property>
+          </widget>
+         </item>
          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QPushButton" name="Pre_AE_TEST">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -545,6 +615,12 @@
    </item>
    <item>
     <widget class="Line" name="line_2">
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -554,6 +630,12 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QProgressBar" name="progressBar">
+       <property name="font">
+        <font>
+         <family>宋体</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="maximum">
         <number>0</number>
        </property>

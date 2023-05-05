@@ -57,6 +57,7 @@ class ChildWindow():
         self.ui.AE_TEST.clicked.connect(self.AE_TEST)
         self.ui.AE_PROJECT_OPEN.clicked.connect(self.AE_PROJECT_OPEN)
         self.ui.AE_MODEL_OPEN.clicked.connect(self.AE_MODEL_OPEN)
+        self.ui.AE_CHOOSE.clicked.connect(self.AE_CHOOSE)
         self.ui.VIDEO_OPEN.clicked.connect(self.VIDEO_OPEN)
         self.ui.IMG_SAVE.clicked.connect(self.IMG_SAVE)
         self.ui.convert.clicked.connect(self.convert)
@@ -159,10 +160,26 @@ class ChildWindow():
     def Pre_AE_TEST(self):
         file_dir = os.getcwd()
         # print(file_dir)
-        AE_TEST.test(file_dir + '/AE/network_model')
+        AE_TEST.test(file_dir + '/AE/network_model',self.AE_TEST_FILE)
 
     def AE_TEST(self):
+        file_dir = os.getcwd()
         AE_TEST.test(file_dir + '/AE/New_Network_Model')
+
+    def AE_CHOOSE(self):
+        FileDialog = QFileDialog(self.ui.AE_CHOOSE)
+        # 设置可以打开任何文件
+        FileDialog.setFileMode(QFileDialog.AnyFile)
+        # 文件过滤
+        Filter = "(*.jpg,*.png,*.jpeg,*.bmp,*.gif)|*.jgp;*.png;*.jpeg;*.bmp;*.gif|All files(*.*)|*.*"
+        self.AE_TEST_FILE, _ = FileDialog.getOpenFileName(self.ui.AE_CHOOSE, '选择测试图像', './AE/data/bottle/test',
+                                                        'Image files (*.jpg *.gif *.png *.jpeg)')  # 选择目录，返回选中的路径 'Image files (*.jpg *.gif *.png *.jpeg)'
+        # 判断是否正确打开文件
+        if not self.AE_TEST_FILE:
+            QMessageBox.warning(self.ui.AE_CHOOSE, "警告", "文件错误或打开文件失败！", QMessageBox.Yes)
+            return
+        else:
+            self.ui.Pre_AE_TEST.setEnabled(True)
 
     def VIDEO_OPEN(self):
         FileDialog = QFileDialog(self.ui.VIDEO_OPEN)
@@ -171,7 +188,7 @@ class ChildWindow():
         # # 文件过滤
         # Filter = "(*.mov,*.avi,*.mp4,*.mpg,*.mpeg,*.m4v,*.mkv)|All files(*.*)|*.*"
         global video_file
-        video_file, _ = FileDialog.getOpenFileName(self.ui.VIDEO_OPEN, 'open file', './', )  # 选择目录，返回选中的路径
+        video_file, _ = FileDialog.getOpenFileName(self.ui.VIDEO_OPEN, '选择待转换媒体文件', './', )  # 选择目录，返回选中的路径
         # 判断是否正确打开文件
         if not video_file:
             QMessageBox.warning(self.ui.VIDEO_OPEN, "警告", "文件错误或打开文件失败！", QMessageBox.Yes)

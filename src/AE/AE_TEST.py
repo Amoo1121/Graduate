@@ -3,10 +3,12 @@ import cv2
 import matplotlib.pyplot as plt
 import torch
 import AENetwork
+
+
 # from cfg import DefaultConfig
 # import time
 
-def test(file_dir):
+def test(file_dir, test_file_dir):
     torch.backends.cudnn.deterministic = True  # 因为使用了GPU，需要保证种子固定才能保证每次结果相同
     torch.backends.cudnn.benchmark = True  # 让cuDNN找到最合适的算法
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -18,7 +20,7 @@ def test(file_dir):
     model.to(device)
 
     # 读取图像进行预处理，转换为tensor
-    image_path = r'./AE/data/bottle//test/defect/295.jpg'
+    image_path = test_file_dir
     img = cv2.imread(image_path)
     image = cv2.resize(img, (256, 256))
     image_resized = (image.astype('float32') / 127.5) - 1.0  # to -1 ~ 1
@@ -34,6 +36,12 @@ def test(file_dir):
     # 图像求差得到缺陷图
     res_image = cv2.cvtColor(np.power(cv2.subtract(cv2_frame, image), 1), cv2.COLOR_BGR2GRAY)
     res_image = cv2.medianBlur(res_image, 3)
+    if np.mean(res_image) > 0.6:
+        result = '求差后图像（不合格)'
+        print('该瓶盖不合格')
+    else:
+        result = '求差后图像（合格)'
+        print('该瓶盖合格')
 
     # 打印结果
     plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -47,7 +55,7 @@ def test(file_dir):
     plt.title('重构图像')
     plt.subplot(1, 3, 3)
     plt.imshow(res_image)
-    plt.title('残差图像')
+    plt.title(result)
     plt.show()
 
     # cost 0.030434608459472656 s

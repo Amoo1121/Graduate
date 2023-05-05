@@ -18,7 +18,8 @@ class ChildWindow:
         # 从文件中加载UI定义
         # 从 UI 定义中动态 创建一个相应的窗口对象
         self.rimage = None
-        self.backup = None
+        self.backup1 = None
+        self.backup2 = None
         self.ui = QUiLoader().load('./Resources/UI/child_1.ui')
         # self.ui.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.center()
@@ -52,8 +53,9 @@ class ChildWindow:
         self.ui.close()
 
     def backout(self):
-        self.rimage = self.backup
-        img = QtGui.QImage(self.backup, self.backup.shape[1], self.backup.shape[0], QtGui.QImage.Format_BGR888)
+        self.rimage = self.backup1
+        self.backup2 = self.backup1
+        img = QtGui.QImage(self.backup1, self.backup1.shape[1], self.backup1.shape[0], QtGui.QImage.Format_BGR888)
         img = QtGui.QPixmap(img)
         self.ui.rImage.setPixmap(img)
         self.ui.rImage.setScaledContents(True)
@@ -66,6 +68,8 @@ class ChildWindow:
         self.ui.pImage.setPixmap(self.image_file)
         self.ui.pImage.setScaledContents(True)
         self.rimage = cv2.imread(self.image_file)
+        self.backup1 = self.rimage
+        self.backup2 = self.rimage
 
     def openFileNameDialog(self):
         FileDialog = QFileDialog(self.ui.chooseFile)
@@ -86,6 +90,8 @@ class ChildWindow:
         self.ui.pImage.setPixmap(self.image_file)
         self.ui.pImage.setScaledContents(True)
         self.rimage = cv2.imread(self.image_file)
+        self.backup1 = self.rimage
+        self.backup2 = self.rimage
 
     def saveFile(self):
         SaveFilePath = QFileDialog.getExistingDirectory(self.ui.save) #打开存储路径
@@ -99,7 +105,8 @@ class ChildWindow:
         value_max = np.max(img)
         y = value_max - img
         self.rimage = y
-        self.backup = y
+        self.backup1 = self.backup2
+        self.backup2 = y
         # 将图片转化成Qt可读格式
         grey_image = QtGui.QImage(y, y.shape[1], y.shape[0], QtGui.QImage.Format_BGR888)
         grey_image = QtGui.QPixmap(grey_image)
@@ -131,7 +138,8 @@ class ChildWindow:
                     cv2.line(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
                 pass
             self.rimage = img
-            self.backup = img
+            self.backup1 = self.backup2
+            self.backup2 = img
             hough_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
             hough_image = QtGui.QPixmap(hough_image)
             self.ui.rImage.setPixmap(hough_image)
@@ -145,7 +153,8 @@ class ChildWindow:
             magnitude_spectrum = 20 * np.log(np.abs(fshift))
             magnitude_spectrum = np.ascontiguousarray(magnitude_spectrum)
             self.rimage = magnitude_spectrum
-            self.backup = magnitude_spectrum
+            self.backup1 = self.backup2
+            self.backup2 = magnitude_spectrum
             f_image = QtGui.QImage(magnitude_spectrum, magnitude_spectrum.shape[1], magnitude_spectrum.shape[0],
                                    QtGui.QImage.Format_BGR888)
             f_image = QtGui.QPixmap(f_image)
@@ -173,7 +182,8 @@ class ChildWindow:
             # 图像平移
             result = cv2.warpAffine(result, M, (cols, rows))
         self.rimage = result
-        self.backup = result
+        self.backup1 = self.backup2
+        self.backup2 = result
         GTrans_image = QtGui.QImage(result, result.shape[1], result.shape[0], QtGui.QImage.Format_BGR888)
         GTrans_image = QtGui.QPixmap(GTrans_image)
         self.ui.rImage.setPixmap(GTrans_image)
@@ -185,7 +195,8 @@ class ChildWindow:
         kernel = np.ones(shape=[kernel_size, kernel_size], dtype=np.uint8)  # 通过shape=[3,3]可以改变处理效果
         OriginErodeImg = cv2.erode(self.rimage, kernel=kernel)
         self.rimage = OriginErodeImg
-        self.backup = OriginErodeImg
+        self.backup1 = self.backup2
+        self.backup2 = OriginErodeImg
         erode_image = QtGui.QImage(OriginErodeImg, OriginErodeImg.shape[1], OriginErodeImg.shape[0],
                                    QtGui.QImage.Format_BGR888)
         erode_image = QtGui.QPixmap(erode_image)
@@ -198,7 +209,8 @@ class ChildWindow:
         kernel = np.ones(shape=[kernel_size, kernel_size], dtype=np.uint8)  # 通过shape=[3,3]可以改变处理效果
         img = cv2.dilate(self.rimage, kernel, iterations=1)
         self.rimage = img
-        self.backup = img
+        self.backup1 = self.backup2
+        self.backup2 = img
         dilate_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         dilate_image = QtGui.QPixmap(dilate_image)
         self.ui.rImage.setPixmap(dilate_image)
@@ -209,7 +221,8 @@ class ChildWindow:
         img = self.rimage
         img = cv2.blur(img, (KERNEL_SIZE, KERNEL_SIZE))
         self.rimage = img
-        self.backup = img
+        self.backup1 = self.backup2
+        self.backup2 = img
         smooth_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         smooth_image = QtGui.QPixmap(smooth_image)
         self.ui.rImage.setPixmap(smooth_image)
@@ -219,7 +232,8 @@ class ChildWindow:
         KERNEL_SIZE = int(self.ui.FILTER_KERNEL_SIZE.text())
         img = cv2.medianBlur(self.rimage, KERNEL_SIZE)
         self.rimage = img
-        self.backup = img
+        self.backup1 = self.backup2
+        self.backup2 = img
         smooth_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         smooth_image = QtGui.QPixmap(smooth_image)
         self.ui.rImage.setPixmap(smooth_image)
@@ -228,7 +242,8 @@ class ChildWindow:
     def sharpen(self):
         img = cv2.addWeighted(self.rimage, 2, cv2.GaussianBlur(self.rimage, (0, 0), 10), -1, 128)
         self.rimage = img
-        self.backup = img
+        self.backup1 = self.backup2
+        self.backup2 = img
         sharpen_image = QtGui.QImage(img, img.shape[1], img.shape[0], QtGui.QImage.Format_BGR888)
         sharpen_image = QtGui.QPixmap(sharpen_image)
         self.ui.rImage.setPixmap(sharpen_image)
@@ -241,7 +256,8 @@ class ChildWindow:
         magnitude_spectrum = 20 * np.log(np.abs(fshift))
         magnitude_spectrum = np.ascontiguousarray(magnitude_spectrum)
         self.rimage = magnitude_spectrum
-        self.backup = magnitude_spectrum
+        self.backup1 = self.backup2
+        self.backup2 = magnitude_spectrum
         f_image = QtGui.QImage(magnitude_spectrum, magnitude_spectrum.shape[1], magnitude_spectrum.shape[0],
                                QtGui.QImage.Format_BGR888)
         f_image = QtGui.QPixmap(f_image)

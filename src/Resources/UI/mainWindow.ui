@@ -46,6 +46,12 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>宋体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>相机模块</string>
         </property>
@@ -58,6 +64,12 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>宋体</family>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>基础图象处理实验</string>
@@ -72,6 +84,12 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>宋体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>神经网络模型</string>
         </property>
@@ -85,6 +103,12 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>宋体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>深度学习模块</string>
         </property>
@@ -97,6 +121,12 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>宋体</family>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>控制台信息</string>
@@ -118,8 +148,13 @@
     </rect>
    </property>
    <widget class="QMenu" name="menu">
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
-     <string>菜单</string>
+     <string>帮助</string>
     </property>
     <addaction name="about"/>
     <addaction name="actiona"/>
@@ -133,6 +168,12 @@
    <property name="text">
     <string>退出</string>
    </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="shortcut">
     <string extracomment="Ctrl+X">Ctrl+X</string>
    </property>
@@ -140,6 +181,12 @@
   <action name="about">
    <property name="text">
     <string>关于</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </action>
  </widget>

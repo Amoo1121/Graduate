@@ -22,6 +22,12 @@
        <height>600</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
@@ -31,6 +37,12 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>宋体</family>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>清空控制台</string>
